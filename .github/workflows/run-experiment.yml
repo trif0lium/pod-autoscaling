@@ -1,0 +1,15 @@
+name: 'exp: run-experiment'
+on:
+  push:
+    branches:
+      - exp
+jobs:
+  run-experiment:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: jupyterhub/action-k3s-helm@v2
+        with:
+          k3s-version: v1.21.11+k3s1
+      - run: |
+          kubectl version
+          kubectl get pods --all-namespaces
