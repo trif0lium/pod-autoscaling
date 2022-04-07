@@ -14,14 +14,14 @@ func main() {
 	e := echo.New()
 	e.GET("/", fib)
 
-	p := prometheus.NewPrometheus("echo", nil)
+	p := prometheus.NewPrometheus("api", nil)
 	p.Use(e)
 	e.Logger.Fatal(e.Start(":1323"))
 }
 
 func fib(c echo.Context) error {
-	min := 20
-	max := 30
+	min := 35
+	max := 42
 	rand.Seed(time.Now().UnixNano())
 	return c.String(http.StatusOK, fmt.Sprint(_fib(rand.Intn(max-min)+min)))
 }
