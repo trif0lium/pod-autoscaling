@@ -6,6 +6,10 @@ authors = ["trif0lium <gh@fleeingsunlight.dev>"]
 
 [tool.poetry.dependencies]
 python = "~3.9"
+scipy = "^1.8.0"
+pandas = "^1.4.2"
+statsmodels = "^0.13.2"
+matplotlib = "^3.5.1"
 
 [tool.poetry.dev-dependencies]
 
