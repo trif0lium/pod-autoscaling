@@ -8,6 +8,7 @@ jobs:
   run-experiment:
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v3
       - uses: jupyterhub/action-k3s-helm@v2
         with:
           k3s-version: v1.21.11+k3s1
