@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api
+  name: api
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: api:dev
+          name: api
+          ports:
+            - containerPort: 1323
+              name: http
+          resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: api
+  name: api
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+    - port: 1323
+      protocol: TCP
+      targetPort: 1323
+      name: http
+  selector:
+    app: api
