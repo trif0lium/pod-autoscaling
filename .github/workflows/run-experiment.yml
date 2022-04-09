@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - exp
+      - exp-python
 jobs:
   run-experiment:
     runs-on: ubuntu-20.04
