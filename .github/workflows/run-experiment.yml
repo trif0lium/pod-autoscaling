@@ -20,3 +20,5 @@ jobs:
           docker save --output api-dev.tar api:dev
       - run: |
           sudo k3s ctr images import api-dev.tar
+      - run: |
+          kubectl apply -f deploy/ --recursive
