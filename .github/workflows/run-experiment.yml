@@ -14,3 +14,8 @@ jobs:
       - run: |
           kubectl version
           kubectl get pods --all-namespaces
+      - run: |
+          docker build -t api:dev .
+          docker save --output api-dev.tar api:dev
+      - run: |
+          sudo k3s ctr images import api-dev.tar
