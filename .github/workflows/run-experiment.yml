@@ -23,9 +23,13 @@ jobs:
       - run: |
           kubectl apply -f deploy/api --recursive
       - run: |
+          kubectl delete service/metrics-server -n kube-system
+          kubectl delete deployment.apps/metrics-server -n kube-system
+          kubectl delete apiservices.apiregistration.k8s.io v1beta1.metrics.k8s.io
+          kubectl delete clusterroles.rbac.authorization.k8s.io system:aggregated-metrics-reader
+      - run: |
           git clone -b release-0.9 --single-branch https://github.com/prometheus-operator/kube-prometheus
           cd kube-prometheus
           kubectl create -f manifests/setup
           until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
           kubectl create -f manifests/
-
