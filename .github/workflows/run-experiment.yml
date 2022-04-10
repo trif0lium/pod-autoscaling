@@ -21,4 +21,11 @@ jobs:
       - run: |
           sudo k3s ctr images import api-dev.tar
       - run: |
-          kubectl apply -f deploy/ --recursive
+          kubectl apply -f deploy/api --recursive
+      - run: |
+          git clone -b release-0.9 --single-branch git@github.com:prometheus-operator/kube-prometheus
+          cd kube-prometheus
+          kubectl create -f manifests/setup
+          until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
+          kubectl create -f manifests/
+
