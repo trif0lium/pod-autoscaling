@@ -1,3 +1,6 @@
+import http from 'k6/http'
+import { sleep } from 'k6'
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
@@ -24,4 +27,9 @@ export const options = {
     // 22:00 - 00.00
     { duration: '2m', target: getRandomIntInclusive(30, 45) },
   ]
+}
+
+export default function() {
+  http.get('http://api.default.svc.cluster.local:1323')
+  sleep(1)
 }
