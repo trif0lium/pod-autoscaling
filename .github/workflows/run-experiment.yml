@@ -26,6 +26,7 @@ jobs:
           docker save --output k6-dev.tar k6:dev
       - run: |
           sudo k3s ctr images import api-dev.tar
+          sudo k3s ctr images import k6-dev.tar
       - run: |
           kubectl apply -f deploy/api --recursive
       - run: |
