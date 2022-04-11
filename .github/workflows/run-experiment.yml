@@ -15,9 +15,9 @@ jobs:
       - run: |
           kubectl version
           kubectl get pods --all-namespaces
-      - uses: docker/setup-buildx-action@v1
-        with:
-          install: true
+      # - uses: docker/setup-buildx-action@v1
+      #   with:
+      #     install: true
       - run: |
           docker build -t api:dev .
           docker save --output api-dev.tar api:dev
