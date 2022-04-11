@@ -22,6 +22,9 @@ jobs:
           docker build -t api:dev .
           docker save --output api-dev.tar api:dev
       - run: |
+          docker build -t k6:dev -f k6.Dockerfile .
+          docker save --output k6-dev.tar k6:dev
+      - run: |
           sudo k3s ctr images import api-dev.tar
       - run: |
           kubectl apply -f deploy/api --recursive
