@@ -29,6 +29,7 @@ jobs:
           sudo k3s ctr images import k6-dev.tar
       - run: |
           kubectl apply -f deploy/api --recursive
+          kubectl -n default wait deploy/api --for condition=available --timeout 5m
       - run: |
           kubectl delete service/metrics-server -n kube-system
           kubectl delete deployment.apps/metrics-server -n kube-system
