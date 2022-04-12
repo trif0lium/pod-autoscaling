@@ -41,3 +41,9 @@ jobs:
           kubectl create -f manifests/setup
           until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
           kubectl create -f manifests/
+      - run: sleep 1m
+      - run: kubectl -n default autoscale deploy/api --cpu-percent=95 --min=1 --max=20
+      - if: always()
+        run: kubectl top pods
+      - if: always()
+        run: kubectl -n default describe hpa/api
