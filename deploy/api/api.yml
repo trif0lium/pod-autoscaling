@@ -24,6 +24,18 @@ spec:
             - containerPort: 1323
               name: http
           resources: {}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            failureThreshold: 1
+            periodSeconds: 15
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            failureThreshold: 30
+            periodSeconds: 15
 status: {}
 ---
 apiVersion: v1
