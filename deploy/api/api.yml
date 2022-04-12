@@ -23,7 +23,13 @@ spec:
           ports:
             - containerPort: 1323
               name: http
-          resources: {}
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "300m"
+            limits:
+              memory: "100Mi"
+              cpu: "300m"
           livenessProbe:
             httpGet:
               path: /healthz
