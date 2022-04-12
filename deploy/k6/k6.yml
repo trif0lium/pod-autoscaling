@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k6
+  namespace: default
+spec:
+  containers:
+    - name: k6
+      image: k6:dev
