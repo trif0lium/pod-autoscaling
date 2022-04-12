@@ -47,7 +47,7 @@ jobs:
       - run: sleep 1m
       - if: always()
         run: kubectl -n default get pods
-      - run: sleep 5m
+      - run: sleep 27m
       - if: always()
         run: kubectl top pods
       - if: always()
