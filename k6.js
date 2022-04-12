@@ -10,22 +10,22 @@ function getRandomIntInclusive(min, max) {
 export const options = {
   stages: [
     // 00:00 - 08:00
-    { duration: '2m', target: getRandomIntInclusive(30, 45) },
-    { duration: '2m', target: getRandomIntInclusive(5, 15) },
-    { duration: '2m', target: getRandomIntInclusive(0, 5) },
-    { duration: '2m', target: getRandomIntInclusive(5, 15) },
+    { duration: '2m', target: getRandomIntInclusive(300, 450) },
+    { duration: '2m', target: getRandomIntInclusive(50, 150) },
+    { duration: '2m', target: getRandomIntInclusive(0, 50) },
+    { duration: '2m', target: getRandomIntInclusive(50, 150) },
     // 08:00 - 12:00
-    { duration: '2m', target: getRandomIntInclusive(75, 100) },
-    { duration: '2m', target: getRandomIntInclusive(75, 100) },
+    { duration: '2m', target: getRandomIntInclusive(750, 1000) },
+    { duration: '2m', target: getRandomIntInclusive(750, 1000) },
     // 12:00 - 16.00
-    { duration: '2m', target: getRandomIntInclusive(85, 100) },
-    { duration: '2m', target: getRandomIntInclusive(85, 100) },
+    { duration: '2m', target: getRandomIntInclusive(850, 1000) },
+    { duration: '2m', target: getRandomIntInclusive(850, 1000) },
     // 16:00 - 22.00
-    { duration: '2m', target: getRandomIntInclusive(50, 75) },
-    { duration: '2m', target: getRandomIntInclusive(50, 75) },
-    { duration: '2m', target: getRandomIntInclusive(45, 60) },
+    { duration: '2m', target: getRandomIntInclusive(500, 750) },
+    { duration: '2m', target: getRandomIntInclusive(500, 750) },
+    { duration: '2m', target: getRandomIntInclusive(450, 600) },
     // 22:00 - 00.00
-    { duration: '2m', target: getRandomIntInclusive(30, 45) },
+    { duration: '2m', target: getRandomIntInclusive(300, 450) },
   ]
 }
 
