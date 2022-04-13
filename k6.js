@@ -8,6 +8,7 @@ function targetNumberOfVUs(min, max) {
 }
 
 export const options = {
+  insecureSkipTLSVerify: true,
   noConnectionReuse: true,
   stages: [
     // 00:00 - 08:00
