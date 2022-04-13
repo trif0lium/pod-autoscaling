@@ -4,10 +4,11 @@ import { sleep } from 'k6'
 function targetNumberOfVUs(min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
-  return Math.ceil(Math.floor(Math.random() * (max - min + 1) + min)) * 5
+  return Math.ceil(Math.floor(Math.random() * (max - min + 1) + min)) * 20
 }
 
 export const options = {
+  noConnectionReuse: true,
   stages: [
     // 00:00 - 08:00
     { duration: '2m', target: targetNumberOfVUs(300, 450) },
