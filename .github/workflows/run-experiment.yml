@@ -43,7 +43,7 @@ jobs:
           kubectl create -f manifests/
       - run: sleep 1m
       - run: kubectl apply -f deploy/k6 --recursive
-      - run: kubectl -n default autoscale deploy/api --cpu-percent=95 --min=1 --max=20
+      - run: kubectl -n default autoscale deploy/api --cpu-percent=85 --min=1 --max=20
       - run: sleep 1m
       - if: always()
         run: kubectl -n default get pods
