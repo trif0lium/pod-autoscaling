@@ -23,8 +23,8 @@ func main() {
 }
 
 func fib(c echo.Context) error {
-	min := 35
-	max := 42
+	min := 40
+	max := 45
 	rand.Seed(time.Now().UnixNano())
 	return c.String(http.StatusOK, fmt.Sprint(_fib(rand.Intn(max-min)+min)))
 }
