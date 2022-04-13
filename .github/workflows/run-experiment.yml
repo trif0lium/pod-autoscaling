@@ -53,6 +53,6 @@ jobs:
       - if: always()
         run: kubectl -n default describe hpa/api
       - if: always()
-        run: kubectl -n default logs hpa/api
+        run: kubectl -n default describe deploy/api
       - if: always()
         run: kubectl -n default logs pod/k6
