@@ -52,3 +52,7 @@ jobs:
         run: kubectl top pods
       - if: always()
         run: kubectl -n default describe hpa/api
+      - if: always()
+        run: kubectl -n default logs hpa/api
+      - if: always()
+        run: kubectl -n default logs pod/k6
