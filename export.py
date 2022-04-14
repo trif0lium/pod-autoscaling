@@ -12,7 +12,7 @@ def get_metrics():
     metrics = response.json()['data']
     return metrics
 
-def write_csv_file(metric_name):
+def write_csv_file(metric_name, file):
     response = requests.get('{0}/api/v1/query'.format(PROMETHEUS), params = {'query': metric_name + '[1h]' })
     results = response.json()['data']['result']
 
@@ -23,7 +23,7 @@ def write_csv_file(metric_name):
     labels.discard('__name__')
     labels = sorted(labels)
 
-    writer = csv.writer(sys.stdout)
+    writer = csv.writer(file)
     writer.writerow(['name', 'timestamp', 'value'] + labels)
 
     for result in results:
@@ -33,3 +33,7 @@ def write_csv_file(metric_name):
         writer.writerow(l)
 
 os.makedirs(DATA, exist_ok = True)
+for metric in get_metrics():
+    file = os.path.join(DATA, metric + '.csv')
+    with open(file, mode = 'w') as _file:
+        write_csv_file(metric, _file)
