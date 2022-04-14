@@ -18,7 +18,7 @@ def write_csv_file(metric_name, file):
 
     labels = set()
     for result in results:
-        label.update(result['metric'].keys())
+        labels.update(result['metric'].keys())
 
     labels.discard('__name__')
     labels = sorted(labels)
