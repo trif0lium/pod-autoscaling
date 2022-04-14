@@ -5,7 +5,7 @@ import time
 import os
 
 PROMETHEUS = 'http://localhost:9090'
-DATA = 'data/' + str(time.time())
+DATA = 'data/' + str(round(time.time() * 1000))
 
 def get_metrics():
     response = requests.get('{0}/api/v1/label/__name__/values'.format(PROMETHEUS))
