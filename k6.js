@@ -12,22 +12,22 @@ export const options = {
   noConnectionReuse: true,
   stages: [
     // 00:00 - 08:00
-    { duration: '2m', target: targetNumberOfVUs(300, 450) },
-    { duration: '2m', target: targetNumberOfVUs(50, 150) },
-    { duration: '2m', target: targetNumberOfVUs(0, 50) },
-    { duration: '2m', target: targetNumberOfVUs(50, 150) },
+    { duration: '4m', target: targetNumberOfVUs(300, 450) },
+    { duration: '4m', target: targetNumberOfVUs(50, 150) },
+    { duration: '4m', target: targetNumberOfVUs(0, 50) },
+    { duration: '4m', target: targetNumberOfVUs(50, 150) },
     // 08:00 - 12:00
-    { duration: '2m', target: targetNumberOfVUs(750, 1000) },
-    { duration: '2m', target: targetNumberOfVUs(750, 1000) },
+    { duration: '4m', target: targetNumberOfVUs(750, 1000) },
+    { duration: '4m', target: targetNumberOfVUs(750, 1000) },
     // 12:00 - 16.00
-    { duration: '2m', target: targetNumberOfVUs(850, 1000) },
-    { duration: '2m', target: targetNumberOfVUs(850, 1000) },
+    { duration: '4m', target: targetNumberOfVUs(850, 1000) },
+    { duration: '4m', target: targetNumberOfVUs(850, 1000) },
     // 16:00 - 22.00
-    { duration: '2m', target: targetNumberOfVUs(500, 750) },
-    { duration: '2m', target: targetNumberOfVUs(500, 750) },
-    { duration: '2m', target: targetNumberOfVUs(450, 600) },
+    { duration: '4m', target: targetNumberOfVUs(500, 750) },
+    { duration: '4m', target: targetNumberOfVUs(500, 750) },
+    { duration: '4m', target: targetNumberOfVUs(450, 600) },
     // 22:00 - 00.00
-    { duration: '2m', target: targetNumberOfVUs(300, 450) },
+    { duration: '4m', target: targetNumberOfVUs(300, 450) },
   ]
 }
 
