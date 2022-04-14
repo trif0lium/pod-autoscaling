@@ -28,7 +28,8 @@ jobs:
           sudo k3s ctr images import api-dev.tar
           sudo k3s ctr images import k6-dev.tar
       - run: |
-          kubectl apply -f deploy/api --recursive
+          kubectl apply -f deploy/api/api.yml
+          kubectl apply -f deploy/api/autoscaling.yml
           kubectl -n default wait deploy/api --for condition=available --timeout 5m
       - run: |
           kubectl delete service/metrics-server -n kube-system
@@ -41,7 +42,6 @@ jobs:
           kubectl create -f manifests/setup
           until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
           kubectl create -f manifests/
-      - run: kubectl -n default autoscale deploy/api --cpu-percent=80 --min=3 --max=20 --horizontal-pod-autoscaler-downscale-stabilization=30
       - run: sleep 1m
       - run: kubectl apply -f deploy/k6 --recursive
       - run: sleep 1m
