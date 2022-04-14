@@ -52,6 +52,7 @@ jobs:
       - run: kubectl apply -f deploy/k6 --recursive
       - run: sleep 1m
       - run: kubectl -n monitoring port-forward svc/prometheus-k8s 9090 &
+      - run: poetry install
       - run: poetry run python export.py
       - if: always()
         run: kubectl -n default get pods
