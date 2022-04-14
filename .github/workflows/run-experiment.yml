@@ -48,6 +48,7 @@ jobs:
           kubectl create -f manifests/setup
           until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
           kubectl create -f manifests/
+          kubectl apply -f deploy/api/service-monitor.yml
       - run: sleep 1m
       - run: kubectl apply -f deploy/k6 --recursive
       - run: sleep 1m
