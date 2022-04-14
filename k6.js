@@ -13,9 +13,9 @@ export const options = {
   stages: [
     // 00:00 - 08:00
     { duration: '4m', target: targetNumberOfVUs(300, 450) },
-    { duration: '4m', target: targetNumberOfVUs(50, 150) },
-    { duration: '4m', target: targetNumberOfVUs(0, 50) },
-    { duration: '4m', target: targetNumberOfVUs(50, 150) },
+    { duration: '4m', target: targetNumberOfVUs(0, 25) },
+    { duration: '4m', target: targetNumberOfVUs(0, 25) },
+    { duration: '4m', target: targetNumberOfVUs(0, 25) },
     // 08:00 - 12:00
     { duration: '4m', target: targetNumberOfVUs(750, 1000) },
     { duration: '4m', target: targetNumberOfVUs(750, 1000) },
