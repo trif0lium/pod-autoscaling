@@ -27,7 +27,7 @@ def write_csv_file(metric_name, file):
     writer.writerow(['name', 'timestamp', 'value'] + labels)
 
     for result in results:
-        l = [result['metric'].get('__name__', '')] + result['value']
+        l = [result['metric'].get('__name__', '')] + result['values']
         for label in labels:
             l.append(result['metric'].get(label, ''))
         writer.writerow(l)
