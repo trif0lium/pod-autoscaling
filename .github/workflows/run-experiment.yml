@@ -76,7 +76,7 @@ jobs:
           cat data/*/*.csv
         continue-on-error: true
       - run: |
-          git switch runs/${{ github.run_id }}/${{ github.run_attempt }}
+          git switch -c runs/${{ github.run_id }}/${{ github.run_attempt }}
           git add data/
           git commit -m '$(date --iso-8601=seconds)'
           git push
