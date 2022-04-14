@@ -53,7 +53,10 @@ jobs:
       - run: sleep 1m
       - run: kubectl -n monitoring port-forward svc/prometheus-k8s 9090 &
       - run: poetry install
-      - run: poetry run python export.py
+      - run: |
+          poetry run python export.py
+          ls -R data/
+          cat data/*/*.csv
         continue-on-error: true
       - if: always()
         run: kubectl -n default get pods
