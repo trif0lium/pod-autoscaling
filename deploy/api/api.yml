@@ -5,6 +5,10 @@ metadata:
     app: api
   name: api
   namespace: default
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: '/metrics'
+    prometheus.io/port: '1323'
 spec:
   replicas: 1
   selector:
