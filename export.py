@@ -2,6 +2,7 @@ import csv
 import requests
 import sys
 import time
+import os
 
 PROMETHEUS = 'http://localhost:9090'
 DATA = 'data/' + time.time()
@@ -30,3 +31,5 @@ def write_csv_file(metric_name):
         for label in labels:
             l.append(result['metric'].get(label, ''))
         writer.writerow(l)
+
+os.makedirs(DATA, exist_ok = True)
