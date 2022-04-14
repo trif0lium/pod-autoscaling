@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v2
         with:
           python-version: 3.9
@@ -54,13 +56,6 @@ jobs:
       - run: sleep 1m
       - run: kubectl apply -f deploy/k6 --recursive
       - run: sleep 1m
-      - run: kubectl -n monitoring port-forward svc/prometheus-k8s 9090 &
-      - run: poetry install
-      - run: |
-          poetry run python export.py
-          ls -R data/
-          cat data/*/*.csv
-        continue-on-error: true
       - if: always()
         run: kubectl -n default get pods
       - run: sleep 50m
@@ -72,3 +67,16 @@ jobs:
         run: kubectl -n default describe deploy/api
       - if: always()
         run: kubectl -n default logs pod/k6
+      - run: kubectl -n monitoring port-forward svc/prometheus-k8s 9090 &
+      - uses: fregante/setup-git-user@v1
+      - run: poetry install
+      - run: |
+          poetry run python export.py
+          ls -R data/
+          cat data/*/*.csv
+        continue-on-error: true
+      - run: |
+          git switch runs/${{ github.run_id }}/${{ github.run_attempt }}
+          git add data/
+          git commit -m '$(date --iso-8601=seconds)'
+          git push
