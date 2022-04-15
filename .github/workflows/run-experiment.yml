@@ -60,7 +60,9 @@ jobs:
         run: kubectl -n default get pods
       - run: sleep 50m
       - if: always()
-        run: kubectl top pods
+        run: |
+          kubectl top pods
+          kubectl -n default get pods
       - if: always()
         run: kubectl -n default describe hpa/api
       - if: always()
