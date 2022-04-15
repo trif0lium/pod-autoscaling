@@ -19,7 +19,7 @@ def write_csv_file(metric_name, file):
     end = now + timedelta(hours=1)
 
     response = requests.get('{0}/api/v1/query_range'.format(PROMETHEUS), params = {
-        'query': metric_name + '[1d]',
+        'query': metric_name,
         'start': start.isoformat(),
         'end': end.isoformat(),
         'step': '3s'
