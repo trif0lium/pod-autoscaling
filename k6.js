@@ -20,8 +20,8 @@ export const options = {
     { duration: '4m', target: targetNumberOfVUs(5, 12) },
     { duration: '4m', target: targetNumberOfVUs(12, 15) },
     // 12:00 - 16.00
-    { duration: '4m', target: targetNumberOfVUs(15, 16) },
-    { duration: '4m', target: targetNumberOfVUs(15, 16) },
+    { duration: '4m', target: targetNumberOfVUs(25, 30) },
+    { duration: '4m', target: targetNumberOfVUs(25, 30) },
     // 16:00 - 22.00
     { duration: '4m', target: targetNumberOfVUs(12, 15) },
     { duration: '4m', target: targetNumberOfVUs(12, 15) },
