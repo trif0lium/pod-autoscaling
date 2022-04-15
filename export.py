@@ -53,10 +53,14 @@ for metric in get_metrics():
     if not metric.startswith('api_') and not metric.startswith('container_'):
         continue
 
-    file = os.path.join(DATA, metric + '.csv')
-    with open(file, mode = 'w') as _file:
-        write_csv_file(metric, _file)
-
     json_file = os.path.join(DATA, metric + '.json')
     with open(json_file, mode = 'w') as _file:
         write_json_file(metric, _file)
+
+for metric in get_metrics():
+    if not metric.startswith('api_') and not metric.startswith('container_'):
+        continue
+
+    file = os.path.join(DATA, metric + '.csv')
+    with open(file, mode = 'w') as _file:
+        write_csv_file(metric, _file)
