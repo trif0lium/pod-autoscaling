@@ -13,7 +13,7 @@ def get_metrics():
     return metrics
 
 def write_csv_file(metric_name, file):
-    response = requests.get('{0}/api/v1/query'.format(PROMETHEUS), params = {'query': metric_name + '[1h]' })
+    response = requests.get('{0}/api/v1/query'.format(PROMETHEUS), params = {'query': metric_name + '[1d]' })
     results = response.json()['data']['result']
 
     labels = set()
