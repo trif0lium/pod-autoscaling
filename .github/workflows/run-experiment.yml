@@ -78,5 +78,5 @@ jobs:
       - run: |
           git switch -c runs/${{ github.run_id }}/${{ github.run_attempt }}
           git add data/
-          git commit -m '$(date --iso-8601=seconds)'
-          git push
+          git commit -m "$(date --iso-8601=seconds)"
+          git push -u origin runs/${{ github.run_id }}/${{ github.run_attempt }}
