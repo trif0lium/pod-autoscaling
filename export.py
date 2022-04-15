@@ -44,7 +44,7 @@ def write_csv_file(metric_name, file):
 
 os.makedirs(DATA, exist_ok = True)
 for metric in get_metrics():
-    if not metric.startswith('api_'):
+    if not metric.startswith('api_') or not metric.startswith('container_'):
         continue
 
     file = os.path.join(DATA, metric + '.csv')
