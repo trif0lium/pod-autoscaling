@@ -2,6 +2,7 @@ import csv
 import requests
 import sys
 import time
+from datetime import datetime, timedelta
 import os
 
 PROMETHEUS = 'http://localhost:9090'
@@ -13,7 +14,16 @@ def get_metrics():
     return metrics
 
 def write_csv_file(metric_name, file):
-    response = requests.get('{0}/api/v1/query'.format(PROMETHEUS), params = {'query': metric_name + '[1d]' })
+    now = datetime.now()
+    start = now - timedelta(hours=1)
+    end = now + timedelta(hours=1)
+
+    response = requests.get('{0}/api/v1/query_range'.format(PROMETHEUS), params = {
+        'query': metric_name + '[1d]',
+        'start': start.isoformat(),
+        'end': end.isoformat(),
+        'step': '3s'
+    })
     results = response.json()['data']['result']
 
     labels = set()
