@@ -20,7 +20,7 @@ def query(metric_name):
     end = now + timedelta(hours=1)
 
     response = requests.get('{0}/api/v1/query'.format(PROMETHEUS), params = {
-        'query': metric_name + '[2d]',
+        'query': 'last_over_time({0}[2d])'.format(metric_name),
     })
 
     return response.json()
