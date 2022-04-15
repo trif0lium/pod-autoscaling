@@ -13,7 +13,7 @@ def get_metrics():
     metrics = response.json()['data']
     return metrics
 
-def write_csv_file(metric_name, file):
+def query(metric_name):
     now = datetime.now()
     start = now - timedelta(hours=1)
     end = now + timedelta(hours=1)
@@ -24,7 +24,15 @@ def write_csv_file(metric_name, file):
         'end': end.isoformat(),
         'step': '3s'
     })
-    results = response.json()['data']['result']
+
+    return response.json()
+
+def write_json_file(metric_name, file):
+    results = query(metric_name)
+    file.write(results)
+
+def write_csv_file(metric_name, file):
+    results = query(metric_name)['data']['result']
 
     labels = set()
     for result in results:
@@ -50,3 +58,7 @@ for metric in get_metrics():
     file = os.path.join(DATA, metric + '.csv')
     with open(file, mode = 'w') as _file:
         write_csv_file(metric, _file)
+
+    json_file = os.path.join(DATA, metric + '.json')
+    with open(json_file, mode = 'w') as _file:
+        write_json_file(metric, _file)
