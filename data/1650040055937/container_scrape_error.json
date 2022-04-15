@@ -1,0 +1,1 @@
+{"status": "success", "data": {"resultType": "vector", "result": [{"metric": {"__name__": "container_scrape_error", "endpoint": "https-metrics", "instance": "10.1.0.36:10250", "job": "kubelet", "metrics_path": "/metrics/cadvisor", "namespace": "kube-system", "node": "fv-az96-38", "service": "kubelet"}, "value": [1650040056.742, "0"]}]}}
