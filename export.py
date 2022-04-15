@@ -1,6 +1,7 @@
 import csv
 import requests
 import sys
+import json
 import time
 from datetime import datetime, timedelta
 import os
@@ -26,7 +27,7 @@ def query(metric_name):
 
 def write_json_file(metric_name, file):
     results = query(metric_name)
-    file.write(results)
+    file.write(json.dumps(results))
 
 def write_csv_file(metric_name, file):
     results = query(metric_name)['data']['result']
