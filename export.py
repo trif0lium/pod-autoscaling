@@ -15,12 +15,8 @@ def get_metrics():
     return metrics
 
 def query(metric_name):
-    now = datetime.now()
-    start = now - timedelta(hours=1)
-    end = now + timedelta(hours=1)
-
     response = requests.get('{0}/api/v1/query'.format(PROMETHEUS), params = {
-        'query': 'last_over_time({0}[2d])'.format(metric_name),
+        'query': '{0}[2d]'.format(metric_name),
     })
 
     return response.json()
