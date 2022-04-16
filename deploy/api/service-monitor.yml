@@ -8,6 +8,7 @@ metadata:
 spec:
   endpoints:
     - port: http
+      interval: 2s
   namespaceSelector:
     matchNames:
       - default
