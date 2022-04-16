@@ -16,6 +16,8 @@ spec:
   logLevel: info
   paused: false
   replicas: 2
+  query:
+    lookbackDelta: 1d
   retention: 2d
   routePrefix: /
   ruleSelector:
