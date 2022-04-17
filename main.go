@@ -12,7 +12,9 @@ import (
 
 func main() {
 	e := echo.New()
-	e.GET("/", fib)
+	e.GET("/", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string]bool{"ok": true})
+	})
 	e.GET("/healthz", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]bool{"ok": true})
 	})
