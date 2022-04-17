@@ -4,7 +4,7 @@ import { sleep } from 'k6'
 function targetNumberOfVUs(min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
-  return Math.ceil(Math.floor(Math.random() * (max - min + 1) + min)) * 1
+  return Math.ceil(Math.floor(Math.random() * (max - min + 1) + min)) * 3
 }
 
 export const options = {
