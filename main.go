@@ -12,9 +12,7 @@ import (
 
 func main() {
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, map[string]bool{"ok": true})
-	})
+	e.GET("/", fib)
 	e.GET("/healthz", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]bool{"ok": true})
 	})
@@ -25,8 +23,8 @@ func main() {
 }
 
 func fib(c echo.Context) error {
-	min := 40
-	max := 45
+	min := 12
+	max := 16
 	rand.Seed(time.Now().UnixNano())
 	return c.String(http.StatusOK, fmt.Sprint(_fib(rand.Intn(max-min)+min)))
 }
